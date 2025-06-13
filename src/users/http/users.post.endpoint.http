@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/v1/users
+Content-Type: application/json
+
+{
+    "fullName": "Ejim Favour",
+    "email": "favour2@example.com",
+    "phoneNumber": "080334738392",
+    "address": "123 Main St",
+    "password": "password123"
+}

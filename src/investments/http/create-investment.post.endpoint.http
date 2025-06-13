@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/v1/investments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2E5ZDM1NzczMTE1MTIxOTcxNzMyNTUiLCJlbWFpbCI6ImZhdm91cjJAZXhhbXBsZS5jb20iLCJyb2xlIjoiaW52ZXN0b3IiLCJpYXQiOjE3MzkxODgyNDgsImV4cCI6MTczOTE5MTg0OCwiYXVkIjoibG9jYWxob3N0OjMwMDEiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMSJ9.MJpcDk9TkTTvduSQrjKGUloe05fs_m1e7Qz0ZS6ZPoo
+
+{
+    "investmentPlanType": "freywood-core",
+    "address": "isgfbiqhd-90cinow",
+    "amount": 5000
+}
