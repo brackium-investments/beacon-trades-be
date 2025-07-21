@@ -60,7 +60,7 @@ export class MailService {
     await this.mailerService.sendMail({
       to: 'favourejim56@gmail.com',
       from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
-      subject: `Contact us message`,
+      subject: `🎉 Contact us message`,
       template: path.join(ROOT_PATH, '/src/mail/templates/contact-us.ejs'),
       context: {
         userName: name,
@@ -68,6 +68,37 @@ export class MailService {
         phoneNumber,
         message,
         email: 'favourejim56@gmail.com',
+      },
+    });
+  }
+
+  public async forgotPasswordMail(
+    name: string,
+    email: string,
+    otp: string,
+  ): Promise<void> {
+    await this.mailerService.sendMail({
+      to: email,
+      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      subject: `🚀 Forgot password request`,
+      template: path.join(ROOT_PATH, '/src/mail/templates/forgot-password.ejs'),
+      context: {
+        name,
+        email,
+        otp,
+      },
+    });
+  }
+
+  public async resetPasswordMail(name: string, email: string): Promise<void> {
+    await this.mailerService.sendMail({
+      to: email,
+      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      subject: `🚀 Reset password successful`,
+      template: path.join(ROOT_PATH, '/src/mail/templates/reset-password.ejs'),
+      context: {
+        name,
+        email,
       },
     });
   }

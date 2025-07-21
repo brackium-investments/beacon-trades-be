@@ -8,8 +8,8 @@ import { ForgotPassswordDto } from '../dtos/forgot-password.dto';
 import { UsersService } from 'src/users/providers/users.service';
 import { randomInt } from 'crypto';
 import { HashingProvider } from './hashing.provider';
-// import { MailService } from 'src/mail/providers/mail.service';
 import * as crypto from 'crypto';
+import { MailService } from 'src/mail/providers/mail.service';
 
 /**
  * provider for forgot password
@@ -37,7 +37,7 @@ export class ForgotPasswordProvider {
     /**
      * injecting the mail service
      */
-    // private readonly mailService: MailService,
+    private readonly mailService: MailService,
   ) {}
 
   /**
@@ -53,7 +53,7 @@ export class ForgotPasswordProvider {
 
     // if user exist the generate the reset token
     // Generate a random integer between 1000 and 9999
-    const resetOtp = randomInt(1000, 10000);
+    const resetOtp = randomInt(1000, 9999);
 
     const hashedOtp = crypto
       .createHash('sha256')
@@ -65,7 +65,11 @@ export class ForgotPasswordProvider {
 
     // send to the user email
     try {
-      // await this.mailService.sendResetOtp(user, resetOtp.toString());
+      await this.mailService.forgotPasswordMail(
+        user.fullname.split(' ')[0],
+        user.email,
+        resetOtp.toString(),
+      );
     } catch (error) {
       console.log(error);
       throw new RequestTimeoutException(error);

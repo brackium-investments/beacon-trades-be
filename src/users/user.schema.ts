@@ -96,6 +96,18 @@ export class User extends Document {
     required: false,
   })
   driversLicenseUrl?: string;
+
+  @Prop({
+    type: String,
+    required: false,
+  })
+  resetOtp?: string;
+
+  @Prop({
+    type: Date,
+    required: false,
+  })
+  resetOtpExpire?: Date;
 }
 
 // create a schema const and export from the class

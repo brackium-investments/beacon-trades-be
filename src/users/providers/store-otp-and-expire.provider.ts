@@ -31,7 +31,7 @@ export class StoreOtpAndExpireProvider {
    * @returns user
    */
   public async storeOtpAndExpire(user: User, otp: string) {
-    const resetExpires = new Date(Date.now() + 10 * 60 * 1000);
+    const resetExpires = new Date(Date.now() + 5 * 60 * 1000);
 
     try {
       const updatedUser = await this.usersModel

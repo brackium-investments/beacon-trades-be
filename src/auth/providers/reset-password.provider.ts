@@ -3,6 +3,7 @@ import { ResetPasswordDto } from '../dtos/reset-password.dto';
 import { HashingProvider } from './hashing.provider';
 import { UsersService } from 'src/users/providers/users.service';
 import * as crypto from 'crypto';
+import { MailService } from 'src/mail/providers/mail.service';
 
 /**
  * provider for reset password
@@ -24,6 +25,8 @@ export class ResetPasswordProvider {
      * injecting users service
      */
     private readonly usersService: UsersService,
+
+    private readonly mailService: MailService,
   ) {}
 
   /**
@@ -48,6 +51,11 @@ export class ResetPasswordProvider {
 
     // if user exists then change the password and clear the reset token and timestamp
     await this.usersService.changeUserPassword(user, hashedPassword);
+
+    await this.mailService.resetPasswordMail(
+      user.fullname.split(' ')[0],
+      user.email,
+    );
 
     return {
       message: 'Password changed successfully',
