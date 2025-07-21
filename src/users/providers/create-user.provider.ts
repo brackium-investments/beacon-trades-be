@@ -10,6 +10,8 @@ import { User } from '../user.schema';
 import { Model } from 'mongoose';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { HashingProvider } from 'src/auth/providers/hashing.provider';
+import { UploadsService } from 'src/uploads/providers/uploads.service';
+import { MailService } from 'src/mail/providers/mail.service';
 
 @Injectable()
 export class CreateUserProvider {
@@ -29,9 +31,19 @@ export class CreateUserProvider {
      */
     @Inject(forwardRef(() => HashingProvider))
     private readonly hashingProvider: HashingProvider,
+
+    /**
+     * injecting uploads service
+     */
+    private readonly uploadsService: UploadsService,
+
+    private readonly mailService: MailService,
   ) {}
 
-  public async createUser(createUserDto: CreateUserDto) {
+  public async createUser(
+    createUserDto: CreateUserDto,
+    files: Express.Multer.File[],
+  ) {
     // check if user already exists
     let existingUser;
 
@@ -40,6 +52,7 @@ export class CreateUserProvider {
       existingUser = await this.usersModel
         .findOne({ email: createUserDto.email })
         .exec();
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error: any) {
       throw new RequestTimeoutException(
         'Unable to process your request at the moment, please try later',
@@ -56,15 +69,29 @@ export class CreateUserProvider {
         {},
       );
     } else {
+      const uploadedFilesUrl = await Promise.all(
+        files.map(
+          async (file) => await this.uploadsService.uploadFile(file, 'beacon'),
+        ),
+      );
+
       const newUser = new this.usersModel({
         ...createUserDto,
+        stateIssuedIDUrl: uploadedFilesUrl[0] || '',
+        driversLicenseUrl: uploadedFilesUrl[1] || '',
         password: await this.hashingProvider.hashPassword(
           createUserDto.password,
         ),
       });
 
+      await this.mailService.welcomeMail(
+        newUser.fullname.split(' ')[0],
+        newUser.email,
+      );
+
       try {
         return await newUser.save();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         throw new RequestTimeoutException(
           'Unable to process your request at the moment, please try later',

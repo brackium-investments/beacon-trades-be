@@ -1,0 +1,7 @@
+PATCH http://localhost:3003/api/v1/investments/activate-investment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODdkZmVhN2ZkZWI4ZTQzM2MxOGM2YWIiLCJlbWFpbCI6ImZhdm91cmVqaW01NkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTMwODc3NjIsImV4cCI6MTc1MzA5MTM2MiwiYXVkIjoibG9jYWxob3N0OjMwMDEiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMSJ9.7XqI5XD3EWpuN8Tv9ac7X29-9SkIrz0APEwWhhU8aMc
+
+{
+    "id": "687dfd67858283fffd2a03a3"
+}

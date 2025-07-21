@@ -1,9 +1,10 @@
-POST http://localhost:3001/api/v1/investments
+POST http://localhost:3003/api/v1/investments
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2E5ZDM1NzczMTE1MTIxOTcxNzMyNTUiLCJlbWFpbCI6ImZhdm91cjJAZXhhbXBsZS5jb20iLCJyb2xlIjoiaW52ZXN0b3IiLCJpYXQiOjE3MzkxODgyNDgsImV4cCI6MTczOTE5MTg0OCwiYXVkIjoibG9jYWxob3N0OjMwMDEiLCJpc3MiOiJsb2NhbGhvc3Q6MzAwMSJ9.MJpcDk9TkTTvduSQrjKGUloe05fs_m1e7Qz0ZS6ZPoo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc5OWQxYjUwYTNhZTA4ZmVmZmI5YTkiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJpbnZlc3RvciIsImlhdCI6MTc1MzAxMDc4MSwiZXhwIjoxNzUzMDE0MzgxLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.nu2q7UEcsm438fpyNYqioWsieObY6e5ipv-YEdxWYMU
 
 {
-    "investmentPlanType": "freywood-core",
+    "investmentType": "STOCKS",
     "address": "isgfbiqhd-90cinow",
-    "amount": 5000
+    "amount": 50000,
+    "investmentPlan": "GOLD"
 }

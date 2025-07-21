@@ -1,0 +1,10 @@
+PATCH http://localhost:3003/api/v1/users/update-image
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc5OWQxYjUwYTNhZTA4ZmVmZmI5YTkiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJpbnZlc3RvciIsImlhdCI6MTc1MzA0MjE4NSwiZXhwIjoxNzUzMDQ1Nzg1LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.2eeiENEAdGQIwWyddWyt42qzYzG7YzZ8-Cc0olKZm0M
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="test-image-4.png"
+Content-Type: image/png
+
+< ./test-image-2.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

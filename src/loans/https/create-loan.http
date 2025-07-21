@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/v1/loans
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc5OWQxYjUwYTNhZTA4ZmVmZmI5YTkiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJpbnZlc3RvciIsImlhdCI6MTc1MzAyOTkzNSwiZXhwIjoxNzUzMDMzNTM1LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.0dg0GpS4iSNfIiOZgGMjSo4INS05R6fSMLGpK9Xa598
+
+{
+    "amount": 1000,
+    "address": "0x1234567890abcdef1234567890abcdef12345678",
+    "contractPeriod": "09-04-2025"
+}

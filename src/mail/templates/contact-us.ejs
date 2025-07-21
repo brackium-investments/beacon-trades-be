@@ -1,0 +1,12 @@
+<%- include('./base.ejs', { 
+    title: 'Contact us email', 
+    email: `${email}`,
+    content: `
+        <p>Hello,</p>
+        <p style="margin: 10px 0px;">
+        This user, ${userName} with email ${userEmail} and ${phoneNumber} sent this message to you: 
+        </p>
+        <p>${message}</p>
+        <p style="margin-top: 10px;" >The BlueLedge Team.</p>    
+    `
+}) %>

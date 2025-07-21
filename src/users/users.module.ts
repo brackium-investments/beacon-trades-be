@@ -10,6 +10,7 @@ import { FindUserByResetOtpAndExpiryTimeProvider } from './providers/find-user-b
 import { ChangeUserPasswordProvider } from './providers/change-user-password.provider';
 import { FindOneByIdProvider } from './providers/find-one-by-id.provider';
 import { AuthModule } from 'src/auth/auth.module';
+import { UploadsModule } from 'src/uploads/uploads.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from 'src/auth/auth.module';
         schema: UserSchema,
       },
     ]),
+    UploadsModule,
   ],
   controllers: [UsersController],
   providers: [

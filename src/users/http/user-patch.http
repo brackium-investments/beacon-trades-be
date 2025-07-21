@@ -1,0 +1,7 @@
+PATCH http://localhost:3003/api/v1/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc5OWQxYjUwYTNhZTA4ZmVmZmI5YTkiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJpbnZlc3RvciIsImlhdCI6MTc1MzA0MDg2NSwiZXhwIjoxNzUzMDQ0NDY1LCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.mDlNjksVituCIZiwyJeYJp95YTD9DLmUQXDyTIZOm9s
+
+{
+    "address": "ajah, lekki, lagos"
+}

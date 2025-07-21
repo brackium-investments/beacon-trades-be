@@ -17,6 +17,11 @@ import { DataResponseInterceptor } from './common/interceptors/data-response/dat
 import { AuthenticationGuard } from './auth/guards/authentication/authentication.guard';
 import { RolesGuard } from './auth/guards/roles/roles.guard';
 import { AccessTokenGuard } from './auth/guards/access-token/access-token.guard';
+import { UploadsModule } from './uploads/uploads.module';
+import { FoundationsModule } from './foundations/foundations.module';
+import { MailModule } from './mail/mail.module';
+import { LoansModule } from './loans/loans.module';
+import { SubscribersModule } from './subscribers/subscribers.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -55,6 +60,11 @@ const ENV = process.env.NODE_ENV;
     // for asynchrousnously registering the jwt module and passing the config to the module
     JwtModule.registerAsync(jwtConfig.asProvider()),
     PaginationModule,
+    UploadsModule,
+    FoundationsModule,
+    MailModule,
+    LoansModule,
+    SubscribersModule,
   ],
   controllers: [AppController],
   providers: [

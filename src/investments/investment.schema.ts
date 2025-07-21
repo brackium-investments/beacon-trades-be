@@ -3,15 +3,23 @@ import { InvestmentType } from './enums/investment-type.enum';
 import { InvestmentState } from './enums/investment-state.enum';
 import mongoose, { ObjectId } from 'mongoose';
 import { Document } from 'mongoose';
+import { InvestmentPlan } from './enums/investment-plan';
 
 @Schema()
 export class Investment extends Document {
   @Prop({
     type: String,
     enum: InvestmentType,
+    required: [true, 'Please enter a valid investment type'],
+  })
+  investmentType: InvestmentType;
+
+  @Prop({
+    type: String,
+    enum: InvestmentPlan,
     required: [true, 'Please enter a valid investment plan'],
   })
-  investmentPlanType: string;
+  investmentPlan: InvestmentPlan;
 
   @Prop({
     type: Number,
@@ -39,12 +47,18 @@ export class Investment extends Document {
 
   @Prop({
     type: Date,
+    default: Date.now(),
+  })
+  updatedAt: Date;
+
+  @Prop({
+    type: Date,
     default: () => {
       const today = new Date();
 
       // Add 4 months to today's date
       const futureDate = new Date();
-      futureDate.setMonth(today.getMonth() + 1);
+      futureDate.setMonth(today.getMonth() + 4);
       return futureDate;
     },
   })
@@ -54,7 +68,7 @@ export class Investment extends Document {
     type: String,
     default: InvestmentState.INACTIVE,
   })
-  investmentState: string;
+  investmentState: InvestmentState;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,

@@ -76,9 +76,12 @@ export class SignInProvider {
       refreshToken,
       user: {
         id: user._id,
-        fullName: user.fullName,
+        fullname: user.fullname,
         role: user.role,
         email: user.email,
+        address: user.address,
+        phoneNumber: user.phoneNumber,
+        image: user.image,
       },
     };
   }

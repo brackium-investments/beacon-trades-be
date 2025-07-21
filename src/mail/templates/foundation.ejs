@@ -1,0 +1,11 @@
+<%- include('./base.ejs', { 
+    title: 'Donation Received', 
+    email: `${email}`,
+    content: `
+        <p>Hi ${name},</p>
+        <p style="margin: 10px 0px;">
+            Thank you for your generous donation of <strong>$${amount}</strong> to our project. Your support is invaluable and helps us continue our work.
+        </p>
+        <p >The BlueLedge Team.</p>    
+    `
+}) %>

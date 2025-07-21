@@ -1,0 +1,8 @@
+POST http://localhost:3003/api/v1/foundations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODc5OWQxYjUwYTNhZTA4ZmVmZmI5YTkiLCJlbWFpbCI6ImZlamltMTg4QGdtYWlsLmNvbSIsInJvbGUiOiJpbnZlc3RvciIsImlhdCI6MTc1Mjk3NDEzMywiZXhwIjoxNzUyOTc3NzMzLCJhdWQiOiJsb2NhbGhvc3Q6MzAwMSIsImlzcyI6ImxvY2FsaG9zdDozMDAxIn0.-7lTxKFbKa7lUH5MaYKUFNrGHeVdIvXPhBy-deHZs9w
+
+{
+    "amount": 1000,
+    "address": "isgfbiqhd-90cinow"
+}

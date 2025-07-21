@@ -1,0 +1,10 @@
+export enum InvestmentPlan {
+  REGULAR = 'REGULAR',
+  INTERMEDIATE = 'INTERMEDIATE',
+  EXPERT = 'EXPERT',
+  GOLD = 'GOLD',
+  PREMIUM = 'PREMIUM',
+  EXCECUTIVE = 'EXECUTIVE',
+  VIP = 'VIP',
+  ULTIMATE = 'ULTIMATE',
+}

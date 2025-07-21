@@ -9,7 +9,7 @@ export class User extends Document {
     required: [true, 'Please provide a full name'],
     lowercase: true,
   })
-  fullName: string;
+  fullname: string;
 
   @Prop({
     type: String,
@@ -32,9 +32,6 @@ export class User extends Document {
 
   @Prop({ type: String, required: [true, ['Please provide an address']] })
   address: string;
-
-  @Prop({ type: String, required: false })
-  referralId?: string;
 
   @Prop({ type: String, required: [true, 'Please provide a password'] })
   password: string;
@@ -87,6 +84,18 @@ export class User extends Document {
     required: false,
   })
   referral?: string[];
+
+  @Prop({
+    type: String,
+    required: false,
+  })
+  stateIssuedIDUrl?: string;
+
+  @Prop({
+    type: String,
+    required: false,
+  })
+  driversLicenseUrl?: string;
 }
 
 // create a schema const and export from the class

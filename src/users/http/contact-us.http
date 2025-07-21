@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/v1/users/contact-us
+Content-Type: application/json
+
+{
+    "fullname": "ejim favour",
+    "email": "frank@gmail.com",
+    "phoneNumber" : "+2340300430202",
+    "message": "This is a great app"
+}

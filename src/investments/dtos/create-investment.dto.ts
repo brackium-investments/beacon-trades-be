@@ -8,12 +8,18 @@ import {
 } from 'class-validator';
 import { InvestmentType } from '../enums/investment-type.enum';
 import { InvestmentState } from '../enums/investment-state.enum';
+import { InvestmentPlan } from '../enums/investment-plan';
 
 export class CreateInvestmentDto {
   @IsNotEmpty()
   @IsString()
   @IsEnum(InvestmentType)
-  investmentPlanType: string;
+  investmentType: InvestmentType;
+
+  @IsNotEmpty()
+  @IsString()
+  @IsEnum(InvestmentPlan)
+  investmentPlan: InvestmentPlan;
 
   @IsNotEmpty()
   @IsString()
@@ -26,9 +32,4 @@ export class CreateInvestmentDto {
   @IsOptional()
   @IsDate()
   activeDate?: Date;
-
-  @IsOptional()
-  @IsInt()
-  @IsEnum(InvestmentState)
-  investmentState?: string;
 }

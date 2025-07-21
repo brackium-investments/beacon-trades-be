@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { User } from '../user.schema';
 import { InjectModel } from '@nestjs/mongoose';
@@ -9,6 +9,12 @@ import { FindOneByIdProvider } from './find-one-by-id.provider';
 import { FindOneUserByEmailProvider } from './find-one-user-by-email.provider';
 import { StoreOtpAndExpireProvider } from './store-otp-and-expire.provider';
 import { FindUserByResetOtpAndExpiryTimeProvider } from './find-user-by-reset-otp-and-expiry-time.provider';
+import { UpdateUserProfileDto } from '../dtos/update-user-profile.dto';
+import { UploadsService } from 'src/uploads/providers/uploads.service';
+import { UpdatePasswordDto } from '../dtos/update-password.dto';
+import { HashingProvider } from 'src/auth/providers/hashing.provider';
+import { ContactUsDto } from '../dtos/contactUsDto';
+import { MailService } from 'src/mail/providers/mail.service';
 
 @Injectable()
 export class UsersService {
@@ -48,10 +54,19 @@ export class UsersService {
      * injecting the find user by reset otp and expires provider
      */
     private readonly findUserByResetOtpAndExpiresProvider: FindUserByResetOtpAndExpiryTimeProvider,
+
+    private readonly uploadsService: UploadsService,
+
+    private readonly bcryptProvider: HashingProvider,
+
+    private readonly mailService: MailService,
   ) {}
 
-  public async createUser(createUserDto: CreateUserDto) {
-    return await this.createUserProvider.createUser(createUserDto);
+  public async createUser(
+    createUserDto: CreateUserDto,
+    files: Express.Multer.File[],
+  ) {
+    return await this.createUserProvider.createUser(createUserDto, files);
   }
 
   public async changeUserPassword(userId: string, newPassword: string) {
@@ -84,6 +99,73 @@ export class UsersService {
   public async findUserByResetOtpAndExpiryTime(otp: string) {
     return await this.findUserByResetOtpAndExpiresProvider.findUserByResetOtpAndExpiryTime(
       otp,
+    );
+  }
+
+  public async updateUserProfile(
+    payload: UpdateUserProfileDto,
+    userId: string,
+  ) {
+    const user = await this.userModel.findByIdAndUpdate(userId, payload, {
+      new: true,
+    });
+
+    return {
+      id: user._id,
+      fullname: user.fullname,
+      email: user.email,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+    };
+  }
+
+  public async updateUserImage(file: Express.Multer.File, userId: string) {
+    const imgUrl = await this.uploadsService.uploadFile(file, 'beacon');
+
+    const user = await this.userModel.findByIdAndUpdate(
+      userId,
+      { image: imgUrl },
+      {
+        new: true,
+      },
+    );
+
+    return {
+      id: user._id,
+      fullname: user.fullname,
+      email: user.email,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+      image: imgUrl,
+    };
+  }
+
+  public async updatePassword(payload: UpdatePasswordDto, userId: string) {
+    const user = await this.userModel.findById(userId);
+
+    if (
+      user &&
+      !(await this.bcryptProvider.comparePassword(
+        payload.currentPassword,
+        user.password,
+      ))
+    ) {
+      throw new UnauthorizedException('Current password is wrong');
+    }
+
+    user.password = await this.bcryptProvider.hashPassword(payload.newPassword);
+
+    await user.save();
+
+    return user;
+  }
+
+  public async contactUs(payload: ContactUsDto) {
+    await this.mailService.contactUsMail(
+      payload.fullname,
+      payload.email,
+      payload.phoneNumber,
+      payload.message,
     );
   }
 }

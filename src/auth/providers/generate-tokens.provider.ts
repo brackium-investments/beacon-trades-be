@@ -56,7 +56,6 @@ export class GenerateTokensProvider {
    * @returns access and refresh tokens
    */
   public async generateTokens(user: User) {
-    console.log('this user: ', user.id);
     const [accessToken, refreshToken] = await Promise.all([
       // Generate the access token
       this.signToken<Partial<ActiveUserData>>(

@@ -1,10 +1,38 @@
 POST http://localhost:3003/api/v1/users
-Content-Type: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
-{
-    "fullName": "Ejim Favour",
-    "email": "favour2@example.com",
-    "phoneNumber": "080334738392",
-    "address": "123 Main St",
-    "password": "password123"
-}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fullname"
+
+jimmy herald
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="email"
+
+favourejim56@gmail.com
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="phoneNumber"
+
+08021234567
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="address"
+
+Enugu
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="password"
+
+@LordThanos989
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="ssn"
+
+90938292
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="test-image-2.png"
+Content-Type: image/png
+
+< ./test-image-2.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="test-image-4.png"
+Content-Type: image/png
+
+< ./test-image-2.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

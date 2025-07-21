@@ -1,0 +1,13 @@
+<%- include('./base.ejs', { 
+    title: 'Loan application', 
+    email: `${email}`,
+    content: `
+        <p>Hi ${name},</p>
+        <p style="margin: 10px 0px;">
+          You just requested for a loan of $${amount}.
+        </p>
+        <p>It will be reviewed</p>
+        <p style="margin: 10px 0px;">if during the process of review the loan request is rejected, your cash collateral will be returned to your wallet address. Otherwise, The loan amount requested will be credited to your wallet address.</p>
+        <p >The BlueLedge Team.</p>    
+    `
+}) %>
