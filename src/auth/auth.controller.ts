@@ -78,6 +78,12 @@ export class AuthController {
     return this.authService.signIn(signInDto);
   }
 
+  @Post('admin-sign-in')
+  @Auth(AuthType.None)
+  public adminSignIn(@Body() payload: SignInDto) {
+    return this.authService.adminSignIn(payload);
+  }
+
   /**
    * route for forgot password
    *

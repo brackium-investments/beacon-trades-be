@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   Patch,
   Post,
   UploadedFile,
@@ -38,6 +39,12 @@ export class UsersController {
     @UploadedFiles() files: Express.Multer.File[],
   ) {
     return this.usersService.createUser(createUserDto, files);
+  }
+
+  @Roles(Role.ADMIN)
+  @Get('')
+  public getAllUsers() {
+    return this.usersService.getAllUsers();
   }
 
   @Patch('')

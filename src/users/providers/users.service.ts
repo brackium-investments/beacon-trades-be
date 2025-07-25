@@ -15,6 +15,7 @@ import { UpdatePasswordDto } from '../dtos/update-password.dto';
 import { HashingProvider } from 'src/auth/providers/hashing.provider';
 import { ContactUsDto } from '../dtos/contactUsDto';
 import { MailService } from 'src/mail/providers/mail.service';
+import { Role } from 'src/auth/enums/role.enum';
 
 @Injectable()
 export class UsersService {
@@ -186,5 +187,13 @@ export class UsersService {
       payload.phoneNumber,
       payload.message,
     );
+  }
+
+  public async getAllUsers() {
+    const users = await this.userModel
+      .find({ role: Role.INVESTOR })
+      .select('-password');
+
+    return users;
   }
 }

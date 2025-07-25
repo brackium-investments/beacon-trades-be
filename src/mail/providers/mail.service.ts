@@ -20,7 +20,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `🌟 Thank You For Your Generous Donation Made!`,
       template: path.join(ROOT_PATH, '/src/mail/templates/foundation.ejs'),
       context: {
@@ -38,7 +38,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `🌟 Donation Confirmed: Thank You For Your Generous Donation Made!`,
       template: path.join(
         ROOT_PATH,
@@ -60,7 +60,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `💰 Investment created!`,
       template: path.join(ROOT_PATH, '/src/mail/templates/newInvestment.ejs'),
       context: {
@@ -80,7 +80,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: 'favourejim56@gmail.com',
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `📬 New Contact Message Received`,
       template: path.join(ROOT_PATH, '/src/mail/templates/contact-us.ejs'),
       context: {
@@ -100,7 +100,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `🔒 Password Reset Request`,
       template: path.join(ROOT_PATH, '/src/mail/templates/forgot-password.ejs'),
       context: {
@@ -114,7 +114,7 @@ export class MailService {
   public async resetPasswordMail(name: string, email: string): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `✅ Password Reset Successfully`,
       template: path.join(ROOT_PATH, '/src/mail/templates/reset-password.ejs'),
       context: {
@@ -132,7 +132,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `📈 Your Investment is Now Active!`,
       template: path.join(
         ROOT_PATH,
@@ -154,7 +154,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `📈 Your loan is Now Active!`,
       template: path.join(ROOT_PATH, '/src/mail/templates/activate-loan.ejs'),
       context: {
@@ -168,7 +168,7 @@ export class MailService {
   public async activateUserMail(name: string, email: string): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `🎊 Account Activated!`,
       template: path.join(ROOT_PATH, '/src/mail/templates/activate-user.ejs'),
       context: {
@@ -181,7 +181,7 @@ export class MailService {
   public async welcomeMail(name: string, email: string): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `👋 Welcome to BlueLedge Asset Partners!`,
       template: path.join(ROOT_PATH, '/src/mail/templates/welcome.ejs'),
       context: {
@@ -194,7 +194,7 @@ export class MailService {
   public async subscriberMail(email: string): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `📰 Subscribed to Our Newsletter!`,
       template: path.join(ROOT_PATH, '/src/mail/templates/subscriber.ejs'),
       context: {
@@ -210,7 +210,7 @@ export class MailService {
   ): Promise<void> {
     await this.mailerService.sendMail({
       to: email,
-      from: `BlueLedge Asset Partners  <${'admininvestor@brackifi-investor.io'}>`,
+      from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `💸 Loan Request Confirmed`,
       template: path.join(ROOT_PATH, '/src/mail/templates/loan.ejs'),
       context: {
