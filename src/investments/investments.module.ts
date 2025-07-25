@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Investment, InvestmentSchema } from './investment.schema';
 import { UsersModule } from 'src/users/users.module';
 import { GetInvestmentsProvider } from './providers/get-investments.provider';
+import { LoansModule } from 'src/loans/loans.module';
 
 @Module({
   controllers: [InvestmentsController],
@@ -16,6 +17,7 @@ import { GetInvestmentsProvider } from './providers/get-investments.provider';
   ],
   imports: [
     forwardRef(() => UsersModule),
+    LoansModule,
     MongooseModule.forFeature([
       {
         name: Investment.name,

@@ -1,8 +1,9 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Patch, Post } from '@nestjs/common';
 import { DonateToFoundationDto } from './dtos/donate-to-foundation.dto';
 import { ActiveUser } from 'src/auth/decorator/active-user.decorator';
 import { ActiveUserData } from 'src/auth/interfaces/active-user-data.interface';
 import { FoundationsService } from './providers/foundations.service';
+import { ConfirmDonationDto } from './dtos/confirm-donation.dto';
 
 @Controller('foundations')
 export class FoundationsController {
@@ -19,5 +20,10 @@ export class FoundationsController {
     @ActiveUser() user: ActiveUserData,
   ) {
     return this.foundationsService.donateToFoundation(payload, user);
+  }
+
+  @Patch('confirm-donation')
+  public confirmDonation(@Body() payload: ConfirmDonationDto) {
+    return this.foundationsService.confirmDonation(payload.id);
   }
 }

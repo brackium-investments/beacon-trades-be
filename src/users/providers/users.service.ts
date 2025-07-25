@@ -119,8 +119,26 @@ export class UsersService {
     };
   }
 
+  public async activateUser(userId: string) {
+    const updatedUser: any = await this.userModel.findByIdAndUpdate(
+      userId,
+      {
+        active: true,
+        activeDate: Date.now(),
+      },
+      { new: true },
+    );
+
+    await this.mailService.activateUserMail(
+      updatedUser.fullname.split(' ')[0],
+      updatedUser.email,
+    );
+
+    return updatedUser;
+  }
+
   public async updateUserImage(file: Express.Multer.File, userId: string) {
-    const imgUrl = await this.uploadsService.uploadFile(file, 'beacon');
+    const imgUrl = await this.uploadsService.uploadFile(file, 'users-profile');
 
     const user = await this.userModel.findByIdAndUpdate(
       userId,
@@ -154,6 +172,7 @@ export class UsersService {
     }
 
     user.password = await this.bcryptProvider.hashPassword(payload.newPassword);
+    user.passwordChangedAt = new Date();
 
     await user.save();
 

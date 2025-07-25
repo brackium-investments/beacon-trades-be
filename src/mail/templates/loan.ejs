@@ -1,13 +1,13 @@
+
 <%- include('./base.ejs', { 
-    title: 'Loan application', 
+    title: 'Loan Application Received', 
     email: `${email}`,
     content: `
-        <p>Hi ${name},</p>
+        <p>Dear ${name},</p>
         <p style="margin: 10px 0px;">
-          You just requested for a loan of $${amount}.
+          We have received your loan application for <strong>$${amount}</strong>. 
         </p>
-        <p>It will be reviewed</p>
-        <p style="margin: 10px 0px;">if during the process of review the loan request is rejected, your cash collateral will be returned to your wallet address. Otherwise, The loan amount requested will be credited to your wallet address.</p>
-        <p >The BlueLedge Team.</p>    
+        <p>Your application is under review. If approved, the loan amount will be credited to your wallet address. If rejected, any cash collateral will be refunded to your wallet.</p>
+        <p style="margin-top: 10px;">Sincerely,<br>The BlueLedge Team</p>
     `
 }) %>

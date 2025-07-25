@@ -1,0 +1,13 @@
+
+<%- include('./base.ejs', { 
+    title: 'Account Activated', 
+    email: `${email}`,
+    content: `
+        <p>Dear ${name},</p>
+        <p style="margin: 10px 0px;">
+          Congratulations! Your BlueLedge account has been successfully activated. You can now create investments and apply for loans after an 8-month eligibility period.
+        </p>
+        <p>We are excited to support your financial journey.</p>
+        <p style="margin-top: 10px;">Sincerely,<br>The BlueLedge Team</p>
+    `
+}) %>

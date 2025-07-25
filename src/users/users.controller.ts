@@ -17,6 +17,9 @@ import { ActiveUser } from 'src/auth/decorator/active-user.decorator';
 import { ActiveUserData } from 'src/auth/interfaces/active-user-data.interface';
 import { UpdatePasswordDto } from './dtos/update-password.dto';
 import { ContactUsDto } from './dtos/contactUsDto';
+import { ActivateUserDto } from './dtos/activateUserDto';
+import { Roles } from 'src/auth/decorator/role.decorator';
+import { Role } from 'src/auth/enums/role.enum';
 
 @Controller('users')
 export class UsersController {
@@ -43,6 +46,12 @@ export class UsersController {
     @ActiveUser() user: ActiveUserData,
   ) {
     return this.usersService.updateUserProfile(payload, user.sub);
+  }
+
+  @Roles(Role.ADMIN)
+  @Patch('activate-user')
+  public activateUser(@Body() payload: ActivateUserDto) {
+    return this.usersService.activateUser(payload.userId);
   }
 
   @Patch('update-image')

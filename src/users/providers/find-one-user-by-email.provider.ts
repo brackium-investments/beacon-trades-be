@@ -35,7 +35,9 @@ export class FindOneUserByEmailProvider {
     try {
       user = await this.usersModel
         .findOne({ email })
-        .select('id password email role fullname address phoneNumber image')
+        .select(
+          'id password email role fullname address phoneNumber image active',
+        )
         .exec();
     } catch (error) {
       throw new RequestTimeoutException(error, {

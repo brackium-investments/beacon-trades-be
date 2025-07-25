@@ -56,9 +56,9 @@ export class Investment extends Document {
     default: () => {
       const today = new Date();
 
-      // Add 4 months to today's date
+      // Add 8 months to today's date
       const futureDate = new Date();
-      futureDate.setMonth(today.getMonth() + 4);
+      futureDate.setMonth(today.getMonth() + 8);
       return futureDate;
     },
   })

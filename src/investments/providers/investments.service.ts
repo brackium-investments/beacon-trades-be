@@ -10,6 +10,8 @@ import { InvestmentState } from '../enums/investment-state.enum';
 import { dateDiffInDays } from 'src/utils/dateCalcs';
 import { InvestmentType } from '../enums/investment-type.enum';
 import { MailService } from 'src/mail/providers/mail.service';
+import { LoansService } from 'src/loans/providers/loans.service';
+import { LoanState } from 'src/loans/enums/loan-state.enum';
 
 @Injectable()
 export class InvestmentsService {
@@ -25,6 +27,8 @@ export class InvestmentsService {
     private readonly investmentModel: Model<Investment>,
 
     private readonly mailService: MailService,
+
+    private readonly loansService: LoansService,
   ) {}
 
   public async createInvestment(
@@ -43,6 +47,14 @@ export class InvestmentsService {
 
   public async getInvestorDashboard(userId: string) {
     const investments = await this.investmentModel.find({ investor: userId });
+
+    const activeLoans = await this.loansService.getLoans(userId, {
+      loanState: LoanState.ACTIVE,
+    });
+
+    const paidLoans = await this.loansService.getLoans(userId, {
+      loanState: LoanState.PAID,
+    });
 
     const totalDeposited = investments
       .filter((inv) => inv.investmentState !== InvestmentState.INACTIVE)
@@ -113,11 +125,32 @@ export class InvestmentsService {
       },
     ];
 
+    const totalBorrowed = activeLoans
+      .map((loan) => loan.amount)
+      .reduce((acc, cur) => acc + cur, 0);
+
+    const totalPaid = paidLoans
+      .map((loan) => loan.amount)
+      .reduce((acc, cur) => acc + cur, 0);
+
+    const loanGraphData = [
+      {
+        type: 'Total Borrowed',
+        amount: totalBorrowed,
+      },
+      {
+        type: 'Total Paided',
+        amount: totalPaid,
+      },
+    ];
+
     return {
       totalDeposited,
       totalWithdrawn,
+      totalBorrowed,
       availableBalance: activeInvestmentsBalance,
       graphData,
+      loanGraphData,
     };
   }
 

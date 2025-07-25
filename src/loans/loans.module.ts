@@ -17,5 +17,6 @@ import { UsersModule } from 'src/users/users.module';
       },
     ]),
   ],
+  exports: [LoansService],
 })
 export class LoansModule {}

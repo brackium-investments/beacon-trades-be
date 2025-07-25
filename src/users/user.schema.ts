@@ -69,7 +69,7 @@ export class User extends Document {
 
   @Prop({
     type: Boolean,
-    default: true,
+    default: false,
   })
   active: boolean;
 

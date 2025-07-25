@@ -23,6 +23,12 @@ export class Foundation extends Document {
   dateCreated: Date;
 
   @Prop({
+    type: Boolean,
+    default: false,
+  })
+  isConfirmed: boolean;
+
+  @Prop({
     type: Date,
   })
   updatedAt: Date;

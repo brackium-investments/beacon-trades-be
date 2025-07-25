@@ -71,7 +71,8 @@ export class CreateUserProvider {
     } else {
       const uploadedFilesUrl = await Promise.all(
         files.map(
-          async (file) => await this.uploadsService.uploadFile(file, 'beacon'),
+          async (file) =>
+            await this.uploadsService.uploadFile(file, 'credentials'),
         ),
       );
 

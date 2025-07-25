@@ -1,0 +1,13 @@
+
+<%- include('./base.ejs', { 
+    title: 'Donation Received', 
+    email: `${email}`,
+    content: `
+        <p>Dear ${name},</p>
+        <p style="margin: 10px 0px;">
+          Thank you for your generous donation of <strong>$${amount}</strong> to BlueLedge Asset Partners. Your support is greatly appreciated and will contribute significantly to our initiatives.
+        </p>
+        <p>Your donation has been successfully received and confirmed.</p>
+        <p style="margin-top: 10px;">Sincerely,<br>The BlueLedge Team</p>
+    `
+}) %>

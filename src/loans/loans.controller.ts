@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
 import { LoansService } from './providers/loans.service';
 import { CreateLoanDto } from './dtos/create-loan.dto';
 import { ActiveUser } from 'src/auth/decorator/active-user.decorator';
 import { ActiveUserData } from 'src/auth/interfaces/active-user-data.interface';
 import { Roles } from 'src/auth/decorator/role.decorator';
 import { Role } from 'src/auth/enums/role.enum';
+import { ActivateLoanDto } from './dtos/activate-loan.dto';
 
 @Controller('loans')
 export class LoansController {
@@ -20,7 +21,13 @@ export class LoansController {
 
   @Roles(Role.INVESTOR)
   @Get('')
-  public getInvestments(@ActiveUser() user: ActiveUserData) {
+  public getLoans(@ActiveUser() user: ActiveUserData) {
     return this.loansService.getLoans(user.sub);
+  }
+
+  @Roles(Role.ADMIN)
+  @Patch('activate-loan')
+  public activateInvestment(@Body() payload: ActivateLoanDto) {
+    return this.loansService.activateLoan(payload.id);
   }
 }

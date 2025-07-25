@@ -1,13 +1,12 @@
 
 <%- include('./base.ejs', { 
-    title: 'Password Reset Successful', 
+    title: 'Loan Application Confirmed', 
     email: `${email}`,
     content: `
         <p>Dear ${name},</p>
         <p style="margin: 10px 0px;">
-          Your password has been successfully reset for your BlueLedge account.
+          We have confirmed and activated your loan application for <strong>$${amount}</strong>. 
         </p>
-        <p>Please log in with your new credentials to continue managing your investments.</p>
         <p style="margin-top: 10px;">Sincerely,<br>The BlueLedge Team</p>
     `
 }) %>

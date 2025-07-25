@@ -59,12 +59,16 @@ export class SignInProvider {
       );
     } catch (error) {
       throw new RequestTimeoutException(error, {
-        description: 'Could not compare passwords',
+        description: 'Network error!',
       });
     }
 
     if (!isEqual) {
       throw new UnauthorizedException('Incorrect email or password');
+    }
+
+    if (!user.active) {
+      throw new UnauthorizedException('Only activated users can login');
     }
 
     // generate an access token

@@ -1,12 +1,13 @@
+
 <%- include('./base.ejs', { 
-    title: 'Investment created', 
+    title: 'Investment Created', 
     email: `${email}`,
     content: `
-        <p>Hi ${name},</p>
+        <p>Dear ${name},</p>
         <p style="margin: 10px 0px;">
-          You just created a new investment of <strong>$${amount}</strong> in  <strong>${investmentType}</strong>. 
+          You have successfully created a new investment of <strong>$${amount}</strong> in <strong>${investmentType}</strong>.
         </p>
-        <p>It will be reviewed and activated!</p>
-        <p style="margin-top: 10px;">The BlueLedge Team.</p>    
+        <p>Your investment is under review and will be activated upon approval.</p>
+        <p style="margin-top: 10px;">Sincerely,<br>The BlueLedge Team</p>
     `
 }) %>

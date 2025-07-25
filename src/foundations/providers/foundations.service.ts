@@ -50,4 +50,24 @@ export class FoundationsService {
       );
     }
   }
+
+  async confirmDonation(id: string) {
+    const updatedFoundation: any = await this.foundationsModel
+      .findByIdAndUpdate(
+        id,
+        {
+          isConfirmed: true,
+        },
+        { new: true },
+      )
+      .populate('investor', 'fullname email');
+
+    await this.mailService.confirmDonationMail(
+      updatedFoundation.investor.name.split(' ')[0],
+      updatedFoundation.investor.email,
+      updatedFoundation.amount,
+    );
+
+    return updatedFoundation;
+  }
 }

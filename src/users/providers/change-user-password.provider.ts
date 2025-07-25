@@ -38,6 +38,7 @@ export class ChangeUserPasswordProvider {
           password: newPassword,
           resetOtp: null,
           resetOtpExpire: null,
+          passwordChangedAt: Date.now(),
         },
         { new: true }, // Returns the updated document
       );
