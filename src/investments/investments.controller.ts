@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post, Query } from '@nestjs/common';
 import { InvestmentsService } from './providers/investments.service';
 import { CreateInvestmentDto } from './dtos/create-investment.dto';
 import { ActiveUser } from 'src/auth/decorator/active-user.decorator';
@@ -6,6 +6,7 @@ import { ActiveUserData } from 'src/auth/interfaces/active-user-data.interface';
 import { Roles } from 'src/auth/decorator/role.decorator';
 import { Role } from 'src/auth/enums/role.enum';
 import { UpdateInvestmentDto } from './dtos/update-investment.dto';
+import { GetInvestorInvestmentsDto } from './dtos/get-investments.dto';
 
 @Controller('investments')
 export class InvestmentsController {
@@ -28,6 +29,11 @@ export class InvestmentsController {
   @Get('')
   public getInvestments(@ActiveUser() user: ActiveUserData) {
     return this.investmentsService.getAllInvestments(user.sub);
+  }
+
+  @Get('investor-investments')
+  public getInvestorInvestments(@Query() query: GetInvestorInvestmentsDto) {
+    return this.investmentsService.getAllInvestments(query.id);
   }
 
   @Get('dashboard')

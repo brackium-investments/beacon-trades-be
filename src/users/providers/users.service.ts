@@ -192,7 +192,7 @@ export class UsersService {
   public async getAllUsers() {
     const users = await this.userModel
       .find({ role: Role.INVESTOR })
-      .select('-password ssn');
+      .select('-password');
 
     return users;
   }

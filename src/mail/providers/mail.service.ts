@@ -79,7 +79,7 @@ export class MailService {
     message: string,
   ): Promise<void> {
     await this.mailerService.sendMail({
-      to: 'favourejim56@gmail.com',
+      to: 'team@blueledgepartners.com',
       from: `BlueLedge Asset Partners  <${'admin@blueledgepartners.com'}>`,
       subject: `📬 New Contact Message Received`,
       template: path.join(ROOT_PATH, '/src/mail/templates/contact-us.ejs'),

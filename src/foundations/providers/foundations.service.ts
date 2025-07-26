@@ -63,11 +63,17 @@ export class FoundationsService {
       .populate('investor', 'fullname email');
 
     await this.mailService.confirmDonationMail(
-      updatedFoundation.investor.name.split(' ')[0],
+      updatedFoundation.investor.fullname.split(' ')[0],
       updatedFoundation.investor.email,
       updatedFoundation.amount,
     );
 
     return updatedFoundation;
+  }
+
+  async getDonations(userId: string) {
+    const foundations = await this.foundationsModel.find({ investor: userId });
+
+    return foundations;
   }
 }
