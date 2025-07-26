@@ -22,6 +22,7 @@ export class User extends Document {
   @Prop({
     type: String,
     required: true,
+    unique: true,
     validate: {
       validator: (val) =>
         /(?:\+?(\d{1,3}))?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/.test(val),
@@ -29,6 +30,17 @@ export class User extends Document {
     },
   })
   phoneNumber: string;
+
+  @Prop({
+    type: String,
+    required: true,
+    unique: true,
+    validate: {
+      validator: (val) => /^\d{3}-\d{2}-\d{4}$/.test(val),
+      message: 'SSN must be in the format XXX-XX-XXXX',
+    },
+  })
+  ssn: string;
 
   @Prop({ type: String, required: [true, ['Please provide an address']] })
   address: string;

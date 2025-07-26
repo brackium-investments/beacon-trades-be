@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Patch,
   Post,
   UploadedFile,
@@ -45,6 +46,12 @@ export class UsersController {
   @Get('')
   public getAllUsers() {
     return this.usersService.getAllUsers();
+  }
+
+  @Roles(Role.ADMIN)
+  @Get(':id')
+  public getUserDetails(@Param('id') id: string) {
+    return this.usersService.getUserDetails(id);
   }
 
   @Patch('')

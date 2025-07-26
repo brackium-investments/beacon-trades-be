@@ -192,8 +192,17 @@ export class UsersService {
   public async getAllUsers() {
     const users = await this.userModel
       .find({ role: Role.INVESTOR })
-      .select('-password');
+      .select('-password ssn');
 
     return users;
+  }
+
+  public async getUserDetails(userId: string) {
+    const user = await this.userModel
+      .findById(userId)
+      .select('-password')
+      .populate('investments loans foundations');
+
+    return user;
   }
 }
